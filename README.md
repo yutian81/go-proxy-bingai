@@ -32,6 +32,9 @@
 > [!WARNING]
 > 查看 [**>>>快速教程<<<**](https://github.com/Harry-zklcdc/go-proxy-bingai/wiki)
 
+## 环境变量
+**BYPASS_SERVER=https://bypass.b1ng.chat**
+
 ## 🚀 一键部署
 
 ### BingAI + 人机验证服务器
