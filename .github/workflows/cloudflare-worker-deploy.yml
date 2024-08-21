@@ -1,4 +1,4 @@
-name: Cloudfalre Worker Deploy
+name: Cloudflare Worker Deploy
 on:
   push:
     branches:
@@ -12,9 +12,16 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@v2
-      - name: Build & Deploy Worker
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.0.0
+        with:
+          run_install: true
+          version: 9
+      - name: Build
+        run: pnpm run build-worker
+      - name: Deploy Worker
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
           accountId: ${{ secrets.CF_ACCOUNT_ID }}
-          command: 'deploy --keep-vars --no-bundle'
+          command: 'deploy --keep-vars'
